@@ -2,19 +2,20 @@ import React from 'react';
 
 import bg from '../assets/images/autumn_bg.jpg';
 import title from '../assets/images/title.png';
+import HaikuForm from "./HaikuForm";
 
 const Hero = () => {
-    return(
+    return (
         <section
             className="hero is-fullheight"
-            style={{ backgroundImage: "url("+bg+")" }}
+            style={{backgroundImage: "url(" + bg + ")"}}
         >
             <div className="hero-head">
                 <nav className="navbar">
                     <div className="container">
                         <div className="navbar-brand">
                             <a className="navbar-item">
-                                <img src={title} alt="Logo" />
+                                <img src={title} alt="Logo"/>
                             </a>
                             <span className="navbar-burger burger" data-target="navbarMenuHeroA">
             <span></span>
@@ -49,12 +50,19 @@ const Hero = () => {
 
             <div className="hero-body">
                 <div className="container has-text-centered">
-                    <h1 className="title">
-                        Title
-                    </h1>
-                    <h2 className="subtitle">
-                        Subtitle
-                    </h2>
+                    <div className="columns">
+                        <div className="column">
+                            <HaikuForm/>
+                        </div>
+                        <div className="column is-two-thirds">
+                            <h1 className="title">
+                                Title
+                            </h1>
+                            <h2 className="subtitle">
+                                Subtitle
+                            </h2>
+                        </div>
+                    </div>
                 </div>
             </div>
 
