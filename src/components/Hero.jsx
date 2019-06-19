@@ -3,6 +3,7 @@ import React from 'react';
 import bg from '../assets/images/autumn_bg.jpg';
 import title from '../assets/images/title.png';
 import HaikuForm from "./HaikuForm";
+import HaikuOutput from "./HaikuOutput";
 
 const Hero = () => {
     return (
@@ -29,17 +30,17 @@ const Hero = () => {
                                     Home
                                 </a>
                                 <a className="navbar-item">
-                                    Examples
+                                    #
                                 </a>
                                 <a className="navbar-item">
-                                    Documentation
+                                    #
                                 </a>
                                 <span className="navbar-item">
               <a className="button is-primary is-inverted">
                 <span className="icon">
                   <i className="fab fa-github"></i>
                 </span>
-                <span>Download</span>
+                <span>Github</span>
               </a>
             </span>
                             </div>
@@ -55,11 +56,13 @@ const Hero = () => {
                             <HaikuForm/>
                         </div>
                         <div className="column is-two-thirds">
-                            <h1 className="title">
-                                Title
-                            </h1>
+                            <article className="message" style={{ backgroundColor: "rgba(250, 250, 250, 0.6)" }}>
+                                <div className="message-body">
+                                    <HaikuOutput />
+                                </div>
+                            </article>
                             <h2 className="subtitle">
-                                Subtitle
+                                #
                             </h2>
                         </div>
                     </div>

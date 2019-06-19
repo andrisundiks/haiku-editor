@@ -13,9 +13,9 @@ function reducer(state, action) {
         case 'UPDATE_FIRST':
             return { ...state, firstLine: action.payload };
         case 'UPDATE_SECOND':
-            return { ...state, firstLine: action.payload };
+            return { ...state, secondLine: action.payload };
         case 'UPDATE_THIRD':
-            return { ...state, firstLine: action.payload };
+            return { ...state, thirdLine: action.payload };
         default:
             return state;
     }
