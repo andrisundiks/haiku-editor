@@ -1,70 +1,80 @@
 import React, {useContext} from 'react';
+import WordLink from './WordLink';
+
 import {Store} from "../Store";
-import {countWordSyllables, totalLineSyllables} from "../helpers/formatting";
+import syllable from "syllable";
 
 const HaikuOutput = () => {
     const {state} = useContext(Store);
 
-    const firstLine = {
-        text: countWordSyllables(state.firstLine),
-        total: totalLineSyllables(state.firstLine),
-        color: parseInt(totalLineSyllables(state.firstLine)) === 5 ? 'green' : 'red'
+    const formatLine = line => {
+        return line.split(' ').map(word => {
+            return (
+                <div
+                    style={{fontSize: '32px', fontFamily: 'brush', color: 'black'}}
+                    className="column is-pulled-left is-narrow"
+                >
+                    <section>
+                        <WordLink word={word} />
+                        <div
+                            style={{fontSize: '18px', fontFamily: 'brush', color: 'black', marginTop: '-10px'}}
+                        >
+                            {syllable(word) ? syllable(word) : ''}
+                        </div>
+                    </section>
+                </div>
+            )
+        })
     };
-    const secondLine = {
-        text: countWordSyllables(state.secondLine),
-        total: totalLineSyllables(state.secondLine),
-        color: parseInt(totalLineSyllables(state.secondLine)) === 7 ? 'green' : 'red'
+
+    const totalLineSyllables = line => {
+        return line ? "  " + syllable(line) : '';
     };
-    const thirdLine = {
-        text: countWordSyllables(state.thirdLine),
-        total: totalLineSyllables(state.thirdLine),
-        color: parseInt(totalLineSyllables(state.thirdLine)) === 5 ? 'green' : 'red'
+
+    const lineDetails = {
+        first: {
+            total: totalLineSyllables(state.firstLine),
+            color: parseInt(totalLineSyllables(state.firstLine)) === 5 ? 'green' : 'red'
+        },
+        second: {
+            total: totalLineSyllables(state.secondLine),
+            color: parseInt(totalLineSyllables(state.secondLine)) === 7 ? 'green' : 'red'
+        },
+        third: {
+            total: totalLineSyllables(state.thirdLine),
+            color: parseInt(totalLineSyllables(state.thirdLine)) === 5 ? 'green' : 'red'
+        }
     };
 
     return (
             <section>
                 <div className="columns">
+                        {formatLine(state.firstLine)}
                     <div
-                        style={{fontSize: '32px', fontFamily: 'brush', color: 'black'}}
-                        className="column is-11"
+                        style={{fontSize: '32px', fontFamily: 'brush', color: lineDetails.first.color, justifyContent: 'space-between'}}
+                        className="column is-narrow is-pulled-left"
                     >
-                        {firstLine.text}
-                    </div>
-                    <div
-                        style={{fontSize: '32px', fontFamily: 'brush', color: firstLine.color, justifyContent: 'space-between'}}
-                        className="column"
-                    >
-                        {firstLine.total}
+                        {lineDetails.first.total}
                     </div>
                 </div>
 
                 <div className="columns">
+                    {formatLine(state.secondLine)}
                     <div
-                        style={{fontSize: '32px', fontFamily: 'brush', color: 'black'}}
-                        className="column is-11"
+                        style={{fontSize: '32px', fontFamily: 'brush', color: lineDetails.second.color, justifyContent: 'space-between'}}
+                        className="column is-narrow is-pulled-left"
                     >
-                        {secondLine.text}
-                    </div>
-                    <div
-                        style={{fontSize: '32px', fontFamily: 'brush', color: secondLine.color}}
-                        className="column"
-                    >
-                        {secondLine.total}
+                        {lineDetails.second.total}
                     </div>
                 </div>
 
                 <div className="columns">
+                    {formatLine(state.thirdLine)}
                     <div
-                        style={{fontSize: '32px', fontFamily: 'brush', color: 'black'}}
-                        className="column is-11"
+                        style={{fontSize: '32px', fontFamily: 'brush', color: lineDetails.third.color, justifyContent: 'space-between'}}
+                        className="column is-narrow is-pulled-left"
                     >
-                        {thirdLine.text}
-                    </div>
-                    <div
-                        style={{fontSize: '32px', fontFamily: 'brush', color: thirdLine.color}}
-                        className="column"
-                    >
-                        {thirdLine.total}
+                        {lineDetails.third.total}
                     </div>
                 </div>
             </section>
