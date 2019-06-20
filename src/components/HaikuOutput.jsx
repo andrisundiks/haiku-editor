@@ -10,10 +10,7 @@ const HaikuOutput = () => {
     const formatLine = line => {
         return line.split(' ').map(word => {
             return (
-                <div
-                    style={{fontSize: '32px', fontFamily: 'brush', color: 'black'}}
-                    className="column is-pulled-left is-narrow"
-                >
+                <div>
                     <section>
                         <WordLink word={word} />
                         <div

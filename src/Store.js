@@ -5,7 +5,10 @@ export const Store = createContext();
 const initialState = {
     firstLine: "",
     secondLine: "",
-    thirdLine: ""
+    thirdLine: "",
+
+    showModal: false,
+    modalQuery: ''
 };
 
 function reducer(state, action) {
@@ -16,6 +19,12 @@ function reducer(state, action) {
             return { ...state, secondLine: action.payload };
         case 'UPDATE_THIRD':
             return { ...state, thirdLine: action.payload };
+        case 'OPEN_MODAL':
+            return { ...state, showModal: true };
+        case 'CLOSE_MODAL':
+            return { ...state, showModal: false };
+        case 'UPDATE_QUERY':
+            return { ...state, modalQuery: action.payload };
         default:
             return state;
     }
