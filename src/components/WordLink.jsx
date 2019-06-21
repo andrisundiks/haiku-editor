@@ -16,9 +16,9 @@ const WordLink = props => {
 
     return(
         <a
-            className="button is-text column is-pulled-left is-narrow"
+            className="button is-text column is-pulled-left is-narrow is-thin"
             onClick={handleClick}
-            style={{fontSize: '32px', fontFamily: 'brush', color: 'black'}}
+            style={{fontSize: '32px', fontFamily: state.font, color: 'black'}}
         >
             { `${props.word} ` }
         </a>

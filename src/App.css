@@ -4,3 +4,14 @@
     font-family: brush;
     src: url('./assets/fonts/Fujimaru-Regular.ttf');
 }
+
+@font-face {
+    font-family: lato;
+    src: url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+}
+
+.is-thin {
+    margin-bottom: -30px;
+    padding-top: 0;
+    padding-bottom: 0;
+}

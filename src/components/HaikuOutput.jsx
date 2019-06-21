@@ -11,14 +11,12 @@ const HaikuOutput = () => {
         return line.split(' ').map(word => {
             return (
                 <div>
-                    <section>
                         <WordLink word={word} />
                         <div
-                            style={{fontSize: '18px', fontFamily: 'brush', color: 'black', marginTop: '-10px'}}
+                            style={{fontSize: '18px', fontFamily: state.font, color: 'black' }}
                         >
                             {syllable(word) ? syllable(word) : ''}
                         </div>
-                    </section>
                 </div>
             )
         })

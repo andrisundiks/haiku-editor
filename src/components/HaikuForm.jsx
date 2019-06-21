@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
 import {Store} from "../Store";
+import OptionButtons from "./OptionButtons";
 
 const HaikuForm = () => {
     const {state, dispatch} = useContext(Store);
 
     const handleChange = e => {
-        console.log(e.target);
-        dispatch({ type: e.target.name, payload: e.target.value })
+        dispatch({
+            type: 'UPDATE_LINE',
+            payload: {
+                value: e.target.value,
+                line: e.target.name
+            }
+        })
     };
 
     return(
@@ -14,7 +20,7 @@ const HaikuForm = () => {
             <input className="input"
                    type="text"
                    placeholder="First line (5 syllables)"
-                   name="UPDATE_FIRST"
+                   name="firstLine"
                    value={state.firstLine}
                    onChange={handleChange}
             />
@@ -22,7 +28,7 @@ const HaikuForm = () => {
             <input className="input"
                    type="text"
                    placeholder="Second line (7 syllables)"
-                   name="UPDATE_SECOND"
+                   name="secondLine"
                    value={state.secondLine}
                    onChange={handleChange}
             />
@@ -30,10 +36,14 @@ const HaikuForm = () => {
             <input className="input"
                    type="text"
                    placeholder="Text input (5 syllable)"
-                   name="UPDATE_THIRD"
+                   name="thirdLine"
                    value={state.thirdLine}
                    onChange={handleChange}
             />
+
+            <br/><br/>
+
+            <OptionButtons />
         </section>
     )
 };

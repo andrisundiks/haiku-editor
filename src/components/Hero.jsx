@@ -56,7 +56,7 @@ const Hero = () => {
                             <HaikuForm/>
                         </div>
                         <div className="column is-two-thirds">
-                            <article className="message" style={{ backgroundColor: "rgba(250, 250, 250, 0.6)" }}>
+                            <article className="message" style={{ backgroundColor: "rgba(250, 250, 250, 0.6)", height: '234px' }}>
                                 <div className="message-body">
                                     <HaikuOutput />
                                 </div>

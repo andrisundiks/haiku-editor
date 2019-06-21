@@ -8,23 +8,26 @@ const initialState = {
     thirdLine: "",
 
     showModal: false,
-    modalQuery: ''
+    modalQuery: '',
+    font: 'brush'
 };
 
 function reducer(state, action) {
     switch (action.type) {
-        case 'UPDATE_FIRST':
-            return { ...state, firstLine: action.payload };
-        case 'UPDATE_SECOND':
-            return { ...state, secondLine: action.payload };
-        case 'UPDATE_THIRD':
-            return { ...state, thirdLine: action.payload };
+        case 'UPDATE_LINE':
+            const line = action.payload.line;
+            const value = action.payload.value;
+            return { ...state, [line]: value };
         case 'OPEN_MODAL':
             return { ...state, showModal: true };
         case 'CLOSE_MODAL':
             return { ...state, showModal: false };
         case 'UPDATE_QUERY':
             return { ...state, modalQuery: action.payload };
+        case 'RESET':
+            return { ...state, firstLine: '', secondLine: '', thirdLine: ''};
+        case 'TOGGLE_FONT':
+            return { ...state, font: action.payload };
         default:
             return state;
     }
