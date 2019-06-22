@@ -8,7 +8,7 @@ const initialState = {
     thirdLine: "",
 
     showModal: false,
-    modalQuery: '',
+    modalQuery: { index: 0, line: '', word: '' },
     font: 'brush'
 };
 

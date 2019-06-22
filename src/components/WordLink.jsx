@@ -5,13 +5,15 @@ import {Store} from "../Store";
 const WordLink = props => {
     const { state, dispatch } = useContext(Store);
 
-    const generateLink = () => {
-        return `${synonymsApi}/words?syn=${props.word.toLowerCase()}&max=10`
-    };
-
     const handleClick = () => {
+        const payload = {
+            word: props.word,
+            line: props.line,
+            index: props.index
+        };
+
         dispatch({ type: 'OPEN_MODAL' });
-        dispatch({ type: 'UPDATE_QUERY', payload: generateLink() })
+        dispatch({ type: 'UPDATE_QUERY', payload })
     };
 
     return(

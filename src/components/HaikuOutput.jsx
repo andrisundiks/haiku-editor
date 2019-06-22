@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import WordLink from './WordLink';
 
 import {Store} from "../Store";
@@ -7,11 +7,11 @@ import syllable from "syllable";
 const HaikuOutput = () => {
     const {state} = useContext(Store);
 
-    const formatLine = line => {
-        return line.split(' ').map(word => {
+    const formatLine = (lineText, line) => {
+        return lineText.split(' ').map((word, index) => {
             return (
                 <div>
-                        <WordLink word={word} />
+                        <WordLink word={word} line={line} index={index} />
                         <div
                             style={{fontSize: '18px', fontFamily: state.font, color: 'black' }}
                         >
@@ -44,7 +44,7 @@ const HaikuOutput = () => {
     return (
             <section>
                 <div className="columns">
-                        {formatLine(state.firstLine)}
+                        {formatLine(state.firstLine, 'firstLine')}
                     <div
                         style={{fontSize: '32px', fontFamily: 'brush', color: lineDetails.first.color, justifyContent: 'space-between'}}
                         className="column is-narrow is-pulled-left"
@@ -54,7 +54,7 @@ const HaikuOutput = () => {
                 </div>
 
                 <div className="columns">
-                    {formatLine(state.secondLine)}
+                    {formatLine(state.secondLine, 'secondLine')}
                     <div
                         style={{fontSize: '32px', fontFamily: 'brush', color: lineDetails.second.color, justifyContent: 'space-between'}}
                         className="column is-narrow is-pulled-left"
@@ -64,7 +64,7 @@ const HaikuOutput = () => {
                 </div>
 
                 <div className="columns">
-                    {formatLine(state.thirdLine)}
+                    {formatLine(state.thirdLine, 'thirdLine')}
                     <div
                         style={{fontSize: '32px', fontFamily: 'brush', color: lineDetails.third.color, justifyContent: 'space-between'}}
                         className="column is-narrow is-pulled-left"

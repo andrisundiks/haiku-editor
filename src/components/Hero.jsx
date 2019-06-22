@@ -1,9 +1,12 @@
 import React from 'react';
+import {Route, Switch, Link} from 'react-router-dom';
 
 import bg from '../assets/images/autumn_bg.jpg';
 import title from '../assets/images/title.png';
-import HaikuForm from "./HaikuForm";
-import HaikuOutput from "./HaikuOutput";
+
+import HaikuContainer from "./HaikuContainer";
+import About from "./About";
+
 
 const Hero = () => {
     return (
@@ -15,7 +18,7 @@ const Hero = () => {
                 <nav className="navbar">
                     <div className="container">
                         <div className="navbar-brand">
-                            <a className="navbar-item">
+                            <a href="/" className="navbar-item">
                                 <img src={title} alt="Logo"/>
                             </a>
                             <span className="navbar-burger burger" data-target="navbarMenuHeroA">
@@ -26,17 +29,22 @@ const Hero = () => {
                         </div>
                         <div id="navbarMenuHeroA" className="navbar-menu">
                             <div className="navbar-end">
-                                <a className="navbar-item is-active">
+                                <a
+                                    href="/"
+                                    className="navbar-item is-active button is-text"
+                                    style={{ fontFamily: 'brush', fontSize: '32px', textDecoration: 'none', color: 'black', marginTop: '-4px' }}
+                                >
                                     Home
                                 </a>
-                                <a className="navbar-item">
-                                    #
-                                </a>
-                                <a className="navbar-item">
-                                    #
+                                <a
+                                    href="/about"
+                                    className="navbar-item is-active button is-text"
+                                    style={{ fontFamily: 'brush', fontSize: '32px', textDecoration: 'none', color: 'black', marginTop: '-4px' }}
+                                >
+                                    About
                                 </a>
                                 <span className="navbar-item">
-              <a className="button is-primary is-inverted">
+              <a href="https://github.com/Andris-U" className="button is-primary is-inverted">
                 <span className="icon">
                   <i className="fab fa-github"></i>
                 </span>
@@ -51,37 +59,11 @@ const Hero = () => {
 
             <div className="hero-body">
                 <div className="container has-text-centered">
-                    <div className="columns">
-                        <div className="column">
-                            <HaikuForm/>
-                        </div>
-                        <div className="column is-two-thirds">
-                            <article className="message" style={{ backgroundColor: "rgba(250, 250, 250, 0.6)", height: '234px' }}>
-                                <div className="message-body">
-                                    <HaikuOutput />
-                                </div>
-                            </article>
-                            <h2 className="subtitle">
-                                #
-                            </h2>
-                        </div>
-                    </div>
+                    <Switch>
+                        <Route exact path="/" component={HaikuContainer}/>
+                        <Route path="/about" component={About}/>
+                    </Switch>
                 </div>
-            </div>
-
-            <div className="hero-foot">
-                <nav className="tabs">
-                    <div className="container">
-                        <ul>
-                            <li className="is-active"><a>Overview</a></li>
-                            <li><a>Modifiers</a></li>
-                            <li><a>Grid</a></li>
-                            <li><a>Elements</a></li>
-                            <li><a>Components</a></li>
-                            <li><a>Layout</a></li>
-                        </ul>
-                    </div>
-                </nav>
             </div>
         </section>
     )

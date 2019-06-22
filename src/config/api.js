@@ -1,2 +1,2 @@
 
-export const synonymsApi = 'https://www.datamuse.com/api/';
+export const synonymsApi = 'https://cors-anywhere.herokuapp.com/https://api.datamuse.com/';
