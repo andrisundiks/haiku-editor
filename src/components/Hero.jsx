@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch, Link} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import bg from '../assets/images/autumn_bg.jpg';
 import title from '../assets/images/title.png';
@@ -44,7 +44,7 @@ const Hero = () => {
                                     About
                                 </a>
                                 <span className="navbar-item">
-              <a href="https://github.com/Andris-U" className="button is-primary is-inverted">
+              <a href="https://github.com/Andris-U" className="button is-primary is-inverted" style={{ backgroundColor: "rgba(250, 250, 250, 0.6)" }}>
                 <span className="icon">
                   <i className="fab fa-github"></i>
                 </span>
